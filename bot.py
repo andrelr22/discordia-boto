@@ -12,6 +12,7 @@ print(token)
 
 bot = commands.Bot(command_prefix='$', description='A retarded bot')
 
+@bot.command
 async def on_ready():
     print('Logged in as')
     print(bot.user.name)
@@ -24,6 +25,7 @@ async def teste(ctx, a: int, b: int):
     await ctx.send("This is a test")
 
 
+@bot.command()
 async def info(ctx):
     embed = discord.Embed(title="nice bot", description="Nicest bot there is ever.", color=0xeee657)
     
@@ -37,6 +39,7 @@ async def info(ctx):
 
     await ctx.send(embed=embed)
 
+@bot.command
 async def help(ctx):
     embed = discord.Embed(title="nice bot", description="A Very Nice bot. List of commands are:", color=0xeee657)
 
