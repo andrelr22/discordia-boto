@@ -7,23 +7,39 @@ arq_json=open("values.json","r")
 dados_json=json.load(arq_json)
 token=dados_json['token']
 
-print(token)
 
+bot = commands.Bot(command_prefix='$')
 
-bot = commands.Bot(command_prefix='$', description='A retarded bot')
-
-@bot.command
+@bot.event
 async def on_ready():
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
     print('------')
 
+@bot.command()
+async def add(ctx, a: int, b: int):
+    await ctx.send(a+b)
 
 @bot.command()
-async def teste(ctx, a: int, b: int):
-    await ctx.send("This is a test")
+async def multiply(ctx, a: int, b: int):
+    await ctx.send(a*b)
 
+@bot.command()
+async def greet(ctx):
+    await ctx.send(":smiley: :wave: Hello, there!")
+
+@bot.command()
+async def leo(ctx):
+	await ctx.send("O LEO DÁ")
+
+@bot.command()
+async def tripe(ctx):
+	await ctx.send("https://www.youtube.com/user/EsorLxaO/")
+
+@bot.command()
+async def cat(ctx):
+    await ctx.send("https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif")
 
 @bot.command()
 async def info(ctx):
@@ -32,14 +48,17 @@ async def info(ctx):
     # give info about you here
     embed.add_field(name="Author", value="<YOUR-USERNAME>")
     
-  
+    # Shows the number of servers the bot is member of.
+    embed.add_field(name="Server count", value=f"{len(bot.guilds)}")
 
     # give users a link to invite thsi bot to their server
     embed.add_field(name="Invite", value="[Invite link](<insert your OAuth invitation link here>)")
 
     await ctx.send(embed=embed)
 
-@bot.command
+bot.remove_command('help')
+
+@bot.command()
 async def help(ctx):
     embed = discord.Embed(title="nice bot", description="A Very Nice bot. List of commands are:", color=0xeee657)
 
@@ -49,7 +68,15 @@ async def help(ctx):
     embed.add_field(name="$cat", value="Gives a cute cat gif to lighten up the mood.", inline=False)
     embed.add_field(name="$info", value="Gives a little info about the bot", inline=False)
     embed.add_field(name="$help", value="Gives this message", inline=False)
-
+    embed.add_field(name="$leo", value="kek", inline=False)
+    embed.add_field(name="$tripe", value="link do canal no youtube", inline=False)
     await ctx.send(embed=embed)
+
+servidor= discord.Server()
+
+@bot.command()
+async def server(ctx):
+	await ctx.send(servidor.name)
+
 
 bot.run(token)
