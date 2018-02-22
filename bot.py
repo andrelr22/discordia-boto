@@ -48,7 +48,7 @@ async def info(ctx):
     # give info about you here
     embed.add_field(name="Author", value="<YOUR-USERNAME>")
     
-  
+
 
     # give users a link to invite thsi bot to their server
     embed.add_field(name="Invite", value="[Invite link](<insert your OAuth invitation link here>)")
