@@ -71,7 +71,6 @@ async def help(ctx):
     embed.add_field(name="$tripe", value="link do canal no youtube", inline=False)
     await ctx.send(embed=embed)
 
-servidor= discord.Server()
 
 @bot.command()
 async def server(ctx):
