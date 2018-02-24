@@ -4,6 +4,9 @@
   "description": "First Test discord bot",
   "main": "bot.js",
   "author": "Laan",
+  "scripts": {
+    "start": "node bot.js"
+  },
   "dependencies": {
     "discord.io": "^2.5.3",
     "discord.js": "^11.3.0",
